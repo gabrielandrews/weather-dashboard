@@ -1,37 +1,238 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
-
 <head>
+
     <meta charset="UTF-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
-    <title>weather-dashboard</title>
-    <link rel="stylesheet" href="./assets/css/styles.css">
-    <script src="./assets/js/script.js"></script>
+
+    <title>Weather Dashboard</title>
+
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+
 </head>
 
-
 <body>
-    <div class="card">
-      <div class="search">
-        <input type="text" class="search-bar" placeholder="Search">
-        <button><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1.5em"width="1.5em" xmlns="http://www.w3.org/2000/svg"><path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"></path></svg></button>
-      </div>
-      <div class="weather loading">
-        <h2 class="city">Weather in Denver</h2>
-        <h1 class="temp">51°C</h1>
-        <div class="flex">
-          <img src="https://openweathermap.org/img/wn/04n.png" alt="" class="icon" />
-          <div class="description">Cloudy</div>
+
+    <!-- Start Header Section -->
+    <header class="container-fluid">
+
+        <h1>Weather Dashboard</h1>
+
+    </header>
+
+    <div class="row justify-content-start">
+
+        <!-- Column on Left side of page -->
+        <div class="col-3">
+               
+            <!-- Start Section 1 Section (Search for a City)-->
+            <section class="container">
+
+                <div class="mb-3" id="search-section">
+                    <!-- can add disabled attribute to prevent selecting if nothing is chosen -->
+                    <label for="city-search" class="form-label">Search for a City:</label>
+    
+                    <input class="form-control" id="search-bar" rows="3"/>
+    
+                    <button type="button" class="btn btn-primary" id="search-button">Search</button>
+
+                    <button type="button" class="btn btn-success" id="load-button">Load</button>
+
+                    <button type="button" class="btn btn-danger" id="clear-button">Clear</button>
+    
+                </div>
+
+                <div class="btn-group-vertical" id="city-buttons">
+                        
+                    <!-- These buttons are dynamic and added via javascript -->
+
+                </div>
+    
+            </section>
+
         </div>
-        <div class="humidity">Humidity: 60%</div>
-        <div class="wind">Wind speed: 6.2 km/h</div>
-      </div>
+    
+        <!-- Column on right side of page -->
+        <div class="col-9">
+
+            <!-- Start Section 2 Section (Weather Details for Selected City)-->
+            <section class="container">
+
+                <div class="city-title">
+                    <h2 id="current-city">Location</h2>
+                    <img id="current-icon"/>
+
+                </div>
+
+                <div class="this-city">
+
+                    <!-- Current Weather Icon -->
+
+                    <ul id="current-conditions">
+                        
+                        <li id="current-temp">Temperature: </li>
+
+                        <li id="current-wind">Wind Speed: </li>
+            
+                        <li id="current-humid">Humidity: </li>
+            
+                        <li id="current-uv">UV Index: <li id="style-uv"></li>
+                        </li>
+            
+                    </ul>
+
+                </div>
+
+            </section>
+
+            <!-- Start Section 3 Section (5-Day Forecast) -->
+            <section class="container" id="forcast-container">
+
+                <h3>5-Day Forecast:</h3>
+
+                <!-- Day 1 (Current Day +1)-->
+                <div class="card" style="width: 11rem;">
+
+                    <div class="card-body" id="day1">
+
+                        <h5 class="card-title" id="day-1-date"></h5>
+
+                        <ul class="list-group list-group-flush forecast">
+
+                            <li class="list-group-item" id="day-1-icon">
+                                <img class="icon"  id="icon-1-url"/>
+                            </li>
+
+                            <li class="list-group-item" id="day-1-temp">Temp: </li>
+            
+                            <li class="list-group-item" id="day-1-wind">Wind Speed: </li>
+            
+                            <li class="list-group-item" id="day-1-humid">Humidity: </li>
+            
+                        </ul>
+            
+                    </div>
+                </div>
+
+                <!-- Day 2 (Current Day +2)-->
+                <div class="card" style="width: 11rem;">
+
+                    <div class="card-body" id="day2">
+
+                        <h5 class="card-title" id="day-2-date"></h5>
+
+                        <ul class="list-group list-group-flush forecast">
+
+                            <li class="list-group-item" id="day-2-icon">
+                                <img class="icon"  id="icon-2-url"/>
+                            </li>
+
+                            <li class="list-group-item" id="day-2-temp">Temp: </li>
+            
+                            <li class="list-group-item" id="day-2-wind">Wind Speed: </li>
+            
+                            <li class="list-group-item" id="day-2-humid">Humidity: </li>
+            
+                        </ul>
+
+                    </div>
+                </div>
+
+                <!-- Day 3 (Current Day +3)-->
+                <div class="card" style="width: 11rem;">
+
+                    <div class="card-body" id="day3">
+
+                        <h5 class="card-title" id="day-3-date"></h5>
+
+                        <ul class="list-group list-group-flush forecast">
+
+                            <li class="list-group-item" id="day-3-icon">
+                                <img class="icon"  id="icon-3-url"/>
+                            </li>
+
+                            <li class="list-group-item" id="day-3-temp">Temp: </li>
+            
+                            <li class="list-group-item" id="day-3-wind">Wind Speed: </li>
+            
+                            <li class="list-group-item" id="day-3-humid">Humidity: </li>
+            
+                        </ul>
+
+                    </div>
+                </div>
+
+                <!-- Day 4 (Current Day +4)-->
+                <div class="card" style="width: 11rem;">
+
+                    <div class="card-body" id="day4">
+
+                        <h5 class="card-title" id="day-4-date"></h5>
+
+                        <ul class="list-group list-group-flush forecast">
+
+                            <li class="list-group-item" id="day-4-icon">
+                                <img class="icon"  id="icon-4-url"/>
+                            </li>
+
+                            <li class="list-group-item" id="day-4-temp">Temp: </li>
+            
+                            <li class="list-group-item" id="day-4-wind">Wind Speed: </li>
+            
+                            <li class="list-group-item" id="day-4-humid">Humidity: </li>
+            
+                        </ul>
+
+                    </div>
+                </div>
+                
+                <!-- Day 5 (Current Day +5)-->      
+                <div class="card" style="width: 11rem;">
+
+                    <div class="card-body" id="day5">
+
+                        <h5 class="card-title" id="day-5-date"></h5>
+
+                        <ul class="list-group list-group-flush forecast">
+
+                            <li class="list-group-item" id="day-5-icon">
+                                <img class="icon"  id="icon-5-url"/>
+                            </li>
+
+                            <li class="list-group-item" id="day-5-temp">Temp: </li>
+            
+                            <li class="list-group-item" id="day-5-wind">Wind Speed: </li>
+            
+                            <li class="list-group-item" id="day-5-humid">Humidity: </li>
+            
+                        </ul>
+
+                    </div>
+
+                </div>  
+
+            </section>
+
+        </div>
+
     </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+
 </body>
 
 </html>
