@@ -1,86 +1,144 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+header {
+    background-image: linear-gradient(45deg, #51e5ff 0%, #2bb1ff 52%, #0918ee 90%);
+    text-align: center;
+    color: white;
+
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li {
     margin: 0;
-    font-family: 'Open Sans', sans-serif;
-    background: #222;
-    background-image: url('https://source.unsplash.com/1600x900/?landscape');
-    font-size: 120%;
+}
+
+/* Start of Styling for the Search Section */
+
+#search-section {
+    padding: 5px;
+    margin: 5px;
+    border-radius: 8px;
+    border-bottom: solid black 3px;
+
+}
+
+#search-button {
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    
+}
+
+#load-button {
+    margin-top: 0;
+    margin-right: 2px;
+    width: 48%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: inline-flex;
+    justify-content: center;
+}
+
+#clear-button {
+    margin-top: 0;
+    margin-left: 5px;
+    width: 48%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: inline-flex;
+    justify-content: center;
+}
+
+/* End of Styling for the Search Section */
+
+/* Start of Styling for the 5-Day Forecast Section */
+#forecast-container {
+    margin-top: 50px;
 }
 
 .card {
-    background: #000000d0;
+    background-color: rgb(40, 78, 116);
     color: white;
-    padding: 2em;
-    border-radius: 30px;
-    width: 100%;
-    max-width: 420px;
-    margin: 1em;
+    display: inline-flex;
+    margin: 25px;
+    margin-left: 0;
+    margin-top: 0;
+    text-align: left;
+    border-radius: 8px;
+}
+ 
+.card-body {
+    padding: 15px;
 }
 
-.search {
-    display: flex;
-    align-items: center;
+.list-group-item {
+    background-color: rgb(40, 78, 116);
+    color: white;
+}
+
+.forecast {
+    font-size: 15px;
+}
+
+.forecast li {
+    text-align: left;
+    padding: 5px;
+    padding-left: 0;
+    margin: 5px;
+    border: none;
+}
+
+.icon {
+    width: 40%;
+    height: 40%;
+}
+
+
+/* End of Styling for the 5-Day Forecast Section */
+
+/* Styling for the Current Conditions Section */
+.city-title {
+    display: inline-flex;
+    flex-direction: row;
     justify-content: center;
+    align-items: center;
+    font-size: larger;
 }
-  
-button {
-    margin: 0.5em;
-    border-radius: 50%;
-    border: none;
-    height: 44px;
-    width: 44px;
-    outline: none;
-    background: #7c7c7c2b;
-    color: white;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
+
+#current-city {
+    display: inline-flex;
 }
-  
-input.search-bar {
-    border: none;
-    outline: none;
-    padding: 0.4em 1em;
-    border-radius: 24px;
-    background: #7c7c7c2b;
-    color: white;
-    font-family: inherit;
-    font-size: 105%;
-    width: calc(100% - 100px);
-}
-  
-button:hover {
-    background: #7c7c7c6b;
-}
-  
-h1.temp {
-    margin: 0;
-    margin-bottom: 0.4em;
-}
-  
-.flex {
+
+.this-city {
     display: flex;
+    border: solid black 5px;
+    padding: 20px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    margin: 15px 15px 15px 0;
+    border-radius: 14px;
+    
+}
+
+.current-conditions li {
+    display: flex;
+    padding: 10px;
+    margin: 10px;
+    padding-left: 0;
     align-items: center;
 }
-  
-.description {
-    text-transform: capitalize;
-    margin-left: 8px;
+
+#current-uv {
+    display: inline-flex;
 }
-  
-.weather.loading {
-    visibility: hidden;
-    max-height: 20px;
-    position: relative;
+
+#style-uv {
+    display: inline-flex;
+    border-radius: 4px;
+    padding: 2px 7px 2px 7px;
+    margin-left: 3px;
 }
-  
-.weather.loading:after {
-    visibility: visible;
-    content: "Loading...";
-    color: white;
-    position: absolute;
-    top: 0;
-    left: 20px;
-}
+/* End of Styling for the Current Conditions Section */
