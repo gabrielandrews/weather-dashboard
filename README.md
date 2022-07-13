@@ -1,4 +1,4 @@
-# Weather-Sashboard
+# Weather-Dashboard
 - this is a weather dashboard that I created to show worldwide weather with the click of a button. 
 
 - this dashboard uses 2 APIs. one for weather information (openweathermap.org) and a second for random nature background images (Unsplash.com). 
